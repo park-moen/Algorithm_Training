@@ -112,20 +112,17 @@ class ArrayList {
   }
 }
 
-const arr = new ArrayList(6);
+const arr = new ArrayList(3);
 
 for (let i = 0; i < 6; i++) {
-  arr.append(i + 1);
+  arr.append(i);
 }
 
-console.log(arr.print());
-
-console.log(arr.insert(2, 2));
-
-console.log(arr.print());
+arr.setHead(2);
 
 console.log(arr.access(2));
 
-console.log(arr.remove(2));
+arr.insert(1, 2);
 
 console.log(arr.print());
+
