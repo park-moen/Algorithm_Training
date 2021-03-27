@@ -1,17 +1,17 @@
 class Node {
   constructor(value, prev, next) {
-      this.value = value;
-      this.prev = prev;
-      this.next = next;
+    this.value = value;
+    this.prev = prev;
+    this.next = next;
   }
 }
 
 class DoublyLinkedList {
   constructor() {
-      this.head = null;
-      this.tail = null;
+    this.head = null;
+    this.tail = null;
   }
-  
+
   isEmpty() {
     return this.head === null ? true : false;
   }
@@ -23,7 +23,7 @@ class DoublyLinkedList {
     } else {
       const node = new Node(value, null, this.head);
       this.head.prev = node;
-      this.head = node; 
+      this.head = node;
     }
 
     return;
@@ -31,7 +31,7 @@ class DoublyLinkedList {
 
   append(value) {
     if (this.head === null) {
-      this.head = new Node(value, null, null)
+      this.head = new Node(value, null, null);
       this.tail = this.head;
     } else {
       const node = new Node(value, this.tail, null);
@@ -55,7 +55,7 @@ class DoublyLinkedList {
     curr.prev = null;
     this.head = curr;
 
-    return true
+    return true;
   }
 
   access(index) {
@@ -83,7 +83,7 @@ class DoublyLinkedList {
 
     for (let i = 0; i < index; i++) {
       if (curr === null) return false;
-      
+
       curr = curr.next;
     }
 
@@ -113,13 +113,13 @@ class DoublyLinkedList {
 
     let curr = this.head;
     for (let i = 0; i < index; i++) {
-      curr = curr.next
+      curr = curr.next;
 
       if (curr === null) return false;
     }
 
     curr.prev.next = curr.next;
-    
+
     if (curr !== this.tail) {
       curr.next.prev = curr.prev;
     } else {
@@ -132,7 +132,7 @@ class DoublyLinkedList {
   print() {
     if (this.head === null && this.tail === null) {
       console.log('[]');
-      
+
       return;
     }
 
@@ -145,31 +145,27 @@ class DoublyLinkedList {
     }
 
     console.log(`[${result}]`);
-    
+
     return;
   }
 
-  printInv() {
-
-  }
+  printInv() {}
 }
 
 const myList = new DoublyLinkedList();
-
 
 for (let i = 0; i < 3; i++) {
   myList.append(i + 1);
 }
 
-myList.append(4); // 
+myList.append(4); //
 
 console.log(myList.access(4)); // undefined
 
 console.log(myList.setHead(4)); // false
 
-myList.insert(2, 2); 
+myList.insert(2, 2);
 
-myList.remove(4); 
+myList.remove(4);
 
 myList.print(); // [ 1 2 2 3 4 ]
-

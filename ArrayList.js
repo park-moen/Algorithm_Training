@@ -6,12 +6,13 @@ class ArrayList {
   }
   
   isEmpty() {
-    return this.length === 0;
+    return this.length === 0 ? true : false;
   }
 
   prepend(value) {
     if (this.length === this.capacity) {
-      this.capacity *= 2; 
+      this.capacity *= 2;
+
       const newArr = new Int32Array(this.capacity);
 
       for (let i = 0; i < this.length; i++) {
@@ -25,104 +26,112 @@ class ArrayList {
       }
     }
 
-    this.array[0] = value;
     ++this.length;
+    this.array[0] = value;
 
-    return undefined;
+    return;
   }
 
   append(value) {
     if (this.length === this.capacity) {
       this.capacity *= 2;
-      const newArr = new Uint8Array(this.capacity);
+
+      const newArr = new Int32Array(this.capacity);
 
       for (let i = 0; i < this.length; i++) {
         newArr[i] = this.array[i];
       }
 
       this.array = newArr;
-    }  
+    } 
 
     this.array[this.length++] = value;
 
-    return undefined;
+    return;
   }
 
   setHead(index) {
-    if (this.length < index) return false
+
+    if (this.length < index) return false;
     
-    this.array = this.array.slice(index)
+    this.array = this.array.slice(index);
     this.capacity -= index;
     this.length -= index;
 
-    return true
+    return true;
   }
 
   access(index) {
-    if (this.length <= index) return false 
+    if (length.length <= index) return undefined;
 
     return this.array[index];
   }
 
   insert(index, value) {
+    if (this.length < index) return false;
+
     if (this.length === this.capacity) {
       this.capacity *= 2;
-      const newArr = new Uint8Array(this.capacity);
+      const newArr = Int32Array(this.capacity);
 
       for (let i = 0; i < index; i++) {
-        newArr[i] = this.array[i];
+        newArr = this.array[i];
       }
 
-      for (let i = index; i < this.length; i++) {
+      for (let i = this.length - 1; i >= index; i--) {
         newArr[i + 1] = this.array[i];
       }
 
-      this.array = newArr;
     } else {
       for (let i = this.length - 1; i >= index; i--) {
         this.array[i + 1] = this.array[i];
       }
     }
-    
+
     this.array[index] = value;
     ++this.length;
 
-    return false;
+    return true;
   }
 
-  remove(index) { // index = 2, this.length = 7
-    if (this.length > index) {
-      for (let i = index + 1; i < this.length; i++) { 
-        this.array[i - 1] = this.array[i]
-      }
+  remove(index) {
+    if (this.length <= index) return false;
 
-      --this.length;
-      return true
+    for (let i = index; i < this.length; i++) {
+      this.array[i] = this.array[i + 1];
     }
 
-    return false;
+    --this.length;
+
+    return true;
   }
 
   print() {
-    let result = '';
-    for (let i = 0; i < this.length; i++) {
-      result += this.array[i] + ' ';
+    if (this.length === 0) {
+      return '[]';
     }
-      return result;
+
+    let result = ' ';
+
+    for (let i = 0; i < this.length; i++) {
+      result += this.array[i] + ' '
+    }
+
+    return `[${result}]`
   }
 }
 
-const arr = new ArrayList(3);
+const myList = new ArrayList(8);
 
-for (let i = 0; i < 6; i++) {
-  arr.append(i);
+console.log(myList.isEmpty());
+
+console.log(myList.print());
+
+for (let i = 0; i < 5; i++) {
+  myList.append(i + 1);
 }
 
-arr.setHead(2);
+myList.remove(0);
 
-console.log(arr.access(2));
-
-arr.insert(1, 2);
-
-console.log(arr.print());
+console.log(myList.print());
 
