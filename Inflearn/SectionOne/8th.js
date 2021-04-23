@@ -1,8 +1,8 @@
-// for 문을 사용해서 풀어보자
 function solution(arr) {
   let answer;
+
   return answer;
 }
 
-let arr = [5, 3, 7, 11, 2, 15, 17];
+let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
 console.log(solution(arr));

@@ -11,7 +11,7 @@ function solution(arr) {
 
   answer = [sum, Math.min(...answer)];
 
-  retur answer;
+  return answer;
 }
 
 arr = [12, 77, 38, 41, 53, 92, 85];
