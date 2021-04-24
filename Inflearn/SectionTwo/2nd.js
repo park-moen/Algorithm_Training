@@ -3,5 +3,5 @@ function solution(arr) {
   return answer;
 }
 
-let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+let arr = [130, 140, 148, 145, 150, 150, 158];
 console.log(solution(arr));
