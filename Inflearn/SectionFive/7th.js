@@ -7,6 +7,8 @@ function solution(str1, str2) {
     else sH.set(value, sH.get(value) + 1);
   }
 
+  console.log(sH);
+
   for (let value of str2) {
     if (!sH.has(value) || sH.get(value) === 0) return 'NO';
 
