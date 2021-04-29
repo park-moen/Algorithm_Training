@@ -1,5 +1,10 @@
 function solution(s, t) {
-  let answer;
+  let answer = 0;
+
+  for (let value of s) {
+    if (value === t) answer++;
+  }
+
   return answer;
 }
 

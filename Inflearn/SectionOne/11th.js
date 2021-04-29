@@ -1,5 +1,10 @@
 function solution(s) {
-  let answer;
+  let answer = 0;
+
+  for (let val of s) {
+    if (val === val.toUpperCase()) answer++;
+  }
+
   return answer;
 }
 
