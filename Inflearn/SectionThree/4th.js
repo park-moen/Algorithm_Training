@@ -1,29 +1,30 @@
 function solution(s, t) {
   let answer = [];
-  let p = 1000;
-  const len = s.length;
+  let temp = 1000;
 
-  for (let i = 0; i < len; i++) {
-    if (s[i] === t) {
-      p = 0;
-      answer.push(p);
+  for (let val of s) {
+    if (val !== t) {
+      temp++;
+      answer.push(temp);
     } else {
-      p++;
-      answer.push(p);
+      temp = 0;
+      answer.push(temp);
     }
   }
-  p = 1000;
 
-  for (let i = len - 1; i >= 0; i--) {
-    if (s[i] === t) p = 0;
-    else {
-      p++;
-      answer[i] = Math.min(answer[i], p);
+  temp = 1000;
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] !== t) {
+      temp++;
+      answer[i] = Math.min(answer[i], temp);
+    } else {
+      temp = 0;
     }
   }
 
   return answer;
 }
 
-let str = 'teachermodedd';
+let str = 'teachermode';
 console.log(solution(str, 'e'));

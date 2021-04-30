@@ -1,8 +1,11 @@
 function solution(s) {
   let answer = 'YES';
-  s = s.toLowerCase().replace(/[^a-z]/g, '');
+  const temp = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const len = temp.length;
 
-  if (s !== s.split('').reverse().join('')) return 'NO';
+  for (let i = 0; i < Math.floor(len / 2); i++) {
+    if (temp[i] !== temp[len - 1 - i]) return 'NO';
+  }
 
   return answer;
 }
