@@ -12,9 +12,9 @@ function solution(s) {
     }
   }
 
-  console.log(stack);
   return answer;
 }
 
 let a = '()(((()())(())()))(())';
+
 console.log(solution(a));
