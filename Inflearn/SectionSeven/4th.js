@@ -1,5 +1,18 @@
 function solution(arr) {
-  let answer;
+  let answer = arr;
+
+  for (let i = 1; i < arr.length; i++) {
+    let temp = arr[i];
+    let left = i - 1;
+
+    while (left >= 0 && arr[left] > temp) {
+      arr[left + 1] = arr[left];
+      left--;
+    }
+
+    arr[left + 1] = temp;
+  }
+
   return answer;
 }
 
