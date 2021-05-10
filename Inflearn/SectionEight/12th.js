@@ -1,12 +1,17 @@
 function solution(n, r) {
-  let answer = 0;
+  let answer;
+  const dy = Array.from(Array(35), () => Array(35).fill(0));
 
-  function DFS(n) {
-    if (n === 1) return 1;
-    else return n * DFS(n - 1);
+  function DFS(n, r) {
+    if (dy[n][r] > 0) return dy[n][r];
+    else if (n === r || r === 0) return 1;
+    else {
+      dy[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r);
+      return dy[n][r];
+    }
   }
 
-  answer = DFS(n);
+  answer = DFS(n, r);
 
   return answer;
 }
