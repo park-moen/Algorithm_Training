@@ -1,11 +1,7 @@
 function solution(n) {
-  let answer = 0;
-  let dozen = 12;
-
-  if (n % dozen) answer = Math.ceil(n / dozen);
-  else answer = n / dozen;
+  let answer = Math.ceil(n / 12);
 
   return answer;
 }
 
-console.log(solution(11));
+console.log(solution(25));

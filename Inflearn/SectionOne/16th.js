@@ -1,4 +1,4 @@
-function solution(str, val) {
+function solution(str) {
   let answer = '';
 
   for (let i = 0; i < str.length; i++) {
@@ -7,4 +7,4 @@ function solution(str, val) {
 
   return answer;
 }
-console.log(solution('ksekkset', 'k'));
+console.log(solution('ksekkset'));

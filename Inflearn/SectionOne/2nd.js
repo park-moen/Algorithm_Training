@@ -1,15 +1,17 @@
 function solution(a, b, c) {
   let answer = 'YES';
-  let max = Number.MIN_SAFE_INTEGER;
-  let sum = a + b + c;
+  let max;
+  const total = a + b + c;
 
-  if (a > max) max = a;
-  if (b > max) max = b;
+  if (a > b) max = a;
+  else max = b;
+
   if (c > max) max = c;
 
-  if (sum - max <= max) return 'NO';
+  if (total - max < max) return 'NO';
 
   return answer;
 }
 
 console.log(solution(6, 7, 11));
+console.log(solution(13, 33, 17));

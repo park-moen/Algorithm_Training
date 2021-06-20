@@ -1,14 +1,17 @@
 function solution(arr) {
-  let answer = [];
-  let sum = 0;
+  const answer = [];
+  let total = 0;
   let min = Number.MAX_SAFE_INTEGER;
 
-  for (let value of arr) {
-    if (value % 2) {
-      sum += value;
-      if (value < min) min = value;
+  for (let val of arr) {
+    if (val % 2) {
+      total += val;
+      if (min > val) min = val;
     }
   }
+
+  answer.push(min);
+  answer.push(total);
 
   return answer;
 }

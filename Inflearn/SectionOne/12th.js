@@ -1,11 +1,11 @@
+// 2가지 방법 작성
+
 function solution(s) {
   let answer = '';
 
   for (let val of s) {
-    if (val !== val.toUpperCase()) {
-      val = val.toUpperCase();
-    }
-    answer += val;
+    if (val === val.toLowerCase()) answer += val.toUpperCase();
+    else answer += val;
   }
 
   return answer;

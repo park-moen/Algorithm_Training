@@ -1,4 +1,6 @@
 function solution(s) {
+  // let answer = s.replace(/A/g, '#');
+
   let answer = '';
 
   for (let val of s) {

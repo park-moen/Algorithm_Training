@@ -1,14 +1,12 @@
-// for 문을 사용해서 풀어보자
 function solution(arr) {
   let answer;
   let min = Number.MAX_SAFE_INTEGER;
 
-  for (let value of arr) {
-    if (value < min) min = value;
+  for (let val of arr) {
+    if (min > val) min = val;
   }
 
   answer = min;
-
   return answer;
 }
 

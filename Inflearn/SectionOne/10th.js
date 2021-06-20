@@ -1,8 +1,11 @@
+// 2가지 방법 작성
+
 function solution(s, t) {
+  // let answer = s.split(t).length - 1;
   let answer = 0;
 
-  for (let value of s) {
-    if (value === t) answer++;
+  for (let val of s) {
+    if (val === t) answer++;
   }
 
   return answer;

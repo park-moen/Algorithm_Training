@@ -1,9 +1,9 @@
 function solution(s) {
   let answer;
-  let min = parseInt(s.length / 2);
+  let mid = Math.floor(s.length / 2);
 
-  if (s.length % 2) answer = s.substring(min, min + 1);
-  else answer = s.substring(min - 1, min + 1);
+  if (s.length % 2) answer = s.substring(mid, mid + 1);
+  else answer = s.substring(mid - 1, mid + 1);
 
   return answer;
 }
