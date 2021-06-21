@@ -1,11 +1,16 @@
+// 2가지 방법이 존재합니다.
+
 function solution(s) {
   let answer = 'YES';
-  const temp = s.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const len = temp.length;
+  let unityStr = s.toLowerCase().replace(/[^a-z]/g, '');
 
-  for (let i = 0; i < Math.floor(len / 2); i++) {
-    if (temp[i] !== temp[len - 1 - i]) return 'NO';
-  }
+  if (unityStr.split('').reverse().join('') !== unityStr) return 'NO';
+
+  // const len = unityStr.length;
+
+  // for (let i = 0; i < parseInt(len / 2); i++) {
+  //   if (unityStr[i] !== unityStr[len - i - 1]) return 'NO';
+  // }
 
   return answer;
 }

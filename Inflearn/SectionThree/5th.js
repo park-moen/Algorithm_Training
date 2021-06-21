@@ -1,8 +1,9 @@
 function solution(s) {
   let answer = '';
   let cnt = 1;
+  s += ' ';
 
-  for (let i = 0; i < s.length; i++) {
+  for (let i = 0; i < s.length - 1; i++) {
     if (s[i] === s[i + 1]) cnt++;
     else {
       answer += s[i];

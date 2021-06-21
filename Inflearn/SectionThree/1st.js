@@ -1,10 +1,10 @@
 function solution(s) {
   let answer = 'YES';
-  let temp = s.toLowerCase();
-  const len = temp.length;
+  const unityStr = s.toLowerCase();
+  const len = unityStr.length;
 
   for (let i = 0; i < parseInt(len / 2); i++) {
-    if (temp[i] !== temp[len - i - 1]) return 'NO';
+    if (unityStr[i] !== unityStr[len - i - 1]) return 'NO';
   }
 
   return answer;
@@ -13,4 +13,4 @@ function solution(s) {
 let str1 = 'gooG';
 let str2 = 'aHa';
 let str3 = 'dewEd';
-console.log(solution(str3));
+console.log(solution(str1));

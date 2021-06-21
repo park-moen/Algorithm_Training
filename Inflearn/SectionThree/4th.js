@@ -1,25 +1,24 @@
 function solution(s, t) {
   let answer = [];
-  let temp = 1000;
+  let position = 100;
 
   for (let val of s) {
-    if (val !== t) {
-      temp++;
-      answer.push(temp);
+    if (val === t) {
+      position = 0;
+      answer.push(position);
     } else {
-      temp = 0;
-      answer.push(temp);
+      position++;
+      answer.push(position);
     }
   }
 
-  temp = 1000;
+  position = 100;
 
   for (let i = s.length - 1; i >= 0; i--) {
-    if (s[i] !== t) {
-      temp++;
-      answer[i] = Math.min(answer[i], temp);
-    } else {
-      temp = 0;
+    if (s[i] === t) position = 0;
+    else {
+      position++;
+      answer[i] = Math.min(answer[i], position);
     }
   }
 
