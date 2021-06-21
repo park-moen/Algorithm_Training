@@ -1,5 +1,15 @@
 function solution(arr) {
-  let answer;
+  let answer = 0;
+  let cnt = 0;
+
+  for (let val of arr) {
+    if (val === 1) {
+      cnt++;
+      answer += cnt;
+    } else {
+      cnt = 0;
+    }
+  }
 
   return answer;
 }
