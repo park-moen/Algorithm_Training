@@ -1,24 +1,22 @@
 function solution(arr) {
   let answer;
-  let sum = 0;
-  let max = Number.MIN_SAFE_INTEGER;
+  let max = Number.MIN_VALUE;
 
   for (let val of arr) {
     let temp = val;
+    let sum = 0;
 
     while (temp) {
       sum += temp % 10;
-      temp = parseInt(temp / 10);
-
-      if (sum > max) {
-        max = sum;
-        answer = val;
-      } else if (sum === max) {
-        answer = Math.max(answer, val);
-      }
+      temp = Math.floor(temp / 10);
     }
 
-    sum = 0;
+    if (sum > max) {
+      max = sum;
+      answer = val;
+    } else if (sum === max) {
+      if (val > answer) answer = val;
+    }
   }
 
   return answer;

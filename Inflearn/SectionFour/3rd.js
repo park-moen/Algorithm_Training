@@ -1,24 +1,26 @@
 function solution(test) {
   let answer = 0;
-  const n = test[0].length;
+
   const m = test.length;
+  const n = test[0].length;
 
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= n; j++) {
       let cnt = 0;
+
       for (let k = 0; k < m; k++) {
-        let pi = (pj = 0);
+        let pi = 0;
+        let pj = 0;
+
         for (let s = 0; s < n; s++) {
           if (test[k][s] === i) pi = s;
           if (test[k][s] === j) pj = s;
         }
 
-        if (pi < pj) cnt++;
+        if (pj > pi) cnt++;
       }
 
-      if (cnt === m) {
-        answer++;
-      }
+      if (cnt === m) answer++;
     }
   }
 

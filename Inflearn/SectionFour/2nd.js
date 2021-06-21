@@ -1,7 +1,7 @@
 function isPrime(num) {
   if (num === 1) return false;
 
-  for (let i = 2; i < Math.floor(num / 2); i++) {
+  for (let i = 2; i <= parseInt(Math.sqrt(num)); i++) {
     if (num % i === 0) return false;
   }
 
@@ -9,18 +9,24 @@ function isPrime(num) {
 }
 
 function solution(arr) {
-  let answer = [];
+  answer = [];
+
+  // for (let val of arr) {
+  //   let res = Number(val.toString().split('').reverse().join(''));
+
+  //   if (isPrime(res)) answer.push(res);
+  // }
 
   for (let val of arr) {
-    let sum = '';
+    let res = 0;
 
     while (val) {
-      sum += val % 10;
+      let temp = val % 10;
+      res = res * 10 + temp;
       val = parseInt(val / 10);
     }
-    sum = parseInt(sum);
 
-    if (isPrime(sum)) answer.push(sum);
+    if (isPrime(res)) answer.push(res);
   }
 
   return answer;
