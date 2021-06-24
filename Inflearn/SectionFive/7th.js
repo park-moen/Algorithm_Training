@@ -1,23 +1,20 @@
 function solution(str1, str2) {
   let answer = 'YES';
-  const sH = new Map();
+  const temp = new Map();
 
-  for (let value of str1) {
-    if (!sH.has(value)) sH.set(value, 1);
-    else sH.set(value, sH.get(value) + 1);
+  for (let val of str1) {
+    if (temp.has(val)) temp.set(val, temp.get(val) + 1);
+    else temp.set(val, 1);
   }
 
-  console.log(sH);
-
-  for (let value of str2) {
-    if (!sH.has(value) || sH.get(value) === 0) return 'NO';
-
-    sH.set(value, sH.get(value) - 1);
+  for (let val of str2) {
+    if (!temp.has(val) || temp.get(val) === 0) return 'NO';
+    temp.set(val, temp.get(val) - 1);
   }
 
   return answer;
 }
 
-let a = 'abaCC';
-let b = 'Caaab';
+let a = 'AbaAeCe';
+let b = 'baeeACA';
 console.log(solution(a, b));

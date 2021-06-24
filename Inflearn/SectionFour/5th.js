@@ -1,7 +1,7 @@
 function solution(k, card) {
   let answer;
-  let temp = new Set();
   const len = card.length;
+  const temp = new Set();
 
   for (let i = 0; i < len; i++) {
     for (let j = i + 1; j < len; j++) {
@@ -11,8 +11,7 @@ function solution(k, card) {
     }
   }
 
-  let sortTemp = [...temp].sort((a, b) => b - a);
-  return (answer = sortTemp[k - 1]);
+  return (answer = [...temp].sort((a, b) => b - a))[k - 1];
 }
 
 let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];

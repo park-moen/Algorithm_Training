@@ -1,10 +1,10 @@
 function solution(s) {
   let answer = 'YES';
-  const unityStr = s.toLowerCase();
-  const len = unityStr.length;
+  const len = s.length;
+  s = s.toLowerCase();
 
   for (let i = 0; i < parseInt(len / 2); i++) {
-    if (unityStr[i] !== unityStr[len - i - 1]) return 'NO';
+    if (s[i] !== s[len - i - 1]) return 'NO';
   }
 
   return answer;

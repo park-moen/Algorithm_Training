@@ -1,9 +1,10 @@
 function solution(str) {
-  let answer = '';
+  let answer = 0;
 
   for (let val of str) {
     if (!isNaN(val)) answer = answer * 10 + Number(val);
   }
+
   return answer;
 }
 
