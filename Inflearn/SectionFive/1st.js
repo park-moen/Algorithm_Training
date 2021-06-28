@@ -1,7 +1,7 @@
 function solution(arr1, arr2) {
-  const answer = [];
   const n = arr1.length;
   const m = arr2.length;
+  let answer = [];
   let p1 = (p2 = 0);
 
   while (p1 < n && p2 < m) {

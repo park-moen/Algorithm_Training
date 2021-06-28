@@ -1,11 +1,9 @@
 function solution(need, plan) {
   let answer = 'YES';
-  let queue = need.split('');
+  const queue = need.split('');
 
   for (let val of plan) {
-    if (queue.includes(val)) {
-      if (val !== queue.shift()) return 'NO';
-    }
+    if (queue.includes(val) && queue.shift() !== val) return 'NO';
   }
 
   if (queue.length > 0) return 'NO';
@@ -16,3 +14,4 @@ function solution(need, plan) {
 let a = 'CBA';
 let b = 'CBDAGE';
 console.log(solution(a, b));
+// includes

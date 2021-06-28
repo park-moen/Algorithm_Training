@@ -1,6 +1,6 @@
 function solution(n, k) {
   let answer;
-  let queue = Array.from({ length: n }, (_, i) => i + 1);
+  const queue = Array.from({ length: n }, (v, i) => i + 1);
 
   while (queue.length) {
     for (let i = 1; i < k; i++) queue.push(queue.shift());

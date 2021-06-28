@@ -1,14 +1,15 @@
 function solution(s) {
   let answer;
-  let stack = [];
+  const stack = [];
 
   for (let val of s) {
     if (val === ')') {
-      while (stack.pop() !== '(') {}
+      while (stack.pop() !== '(');
     } else stack.push(val);
   }
 
   answer = stack.join('');
+
   return answer;
 }
 

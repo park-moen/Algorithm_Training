@@ -1,15 +1,16 @@
 function solution(s) {
   let answer;
-  const temp = new Map();
+  const hash = new Map();
 
   for (let val of s) {
-    if (temp.has(val)) temp.set(val, temp.get(val) + 1);
-    else temp.set(val, 1);
+    if (hash.has(val)) hash.set(val, hash.get(val) + 1);
+    else hash.set(val, 1);
   }
 
   let max = Number.MIN_SAFE_INTEGER;
 
-  for (let [key, val] of temp) {
+  for (let [key, val] of hash) {
+    console.log(key, val);
     if (val > max) {
       max = val;
       answer = key;

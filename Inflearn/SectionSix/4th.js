@@ -1,6 +1,6 @@
 function solution(s) {
   let answer;
-  let stack = [];
+  const stack = [];
 
   for (let val of s) {
     if (!isNaN(val)) stack.push(Number(val));
@@ -16,7 +16,6 @@ function solution(s) {
   }
 
   answer = stack[0];
-
   return answer;
 }
 
