@@ -1,17 +1,22 @@
 function solution(target, arr) {
   let answer;
-  let left = 0;
-  let right = arr.length - 1;
+
+  let lt = 0;
+  let rt = arr.length - 1;
 
   arr.sort((a, b) => a - b);
 
-  while (left <= right) {
-    let mid = parseInt((left + right) / 2);
+  while (lt <= rt) {
+    let mid = parseInt((lt + rt) / 2);
+
     if (arr[mid] === target) {
       answer = mid + 1;
       break;
-    } else if (arr[mid] > target) right = mid - 1;
-    else left = mid + 1;
+    } else if (arr[mid] > target) {
+      rt = mid - 1;
+    } else {
+      lt = mid + 1;
+    }
   }
 
   return answer;

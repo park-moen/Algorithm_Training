@@ -3,7 +3,7 @@ function count(songs, capacity) {
   let sum = 0;
 
   for (let val of songs) {
-    if (val + sum > capacity) {
+    if (sum + val > capacity) {
       cnt++;
       sum = val;
     } else {
@@ -16,17 +16,17 @@ function count(songs, capacity) {
 
 function solution(m, songs) {
   let answer;
-  let left = Math.max(...songs);
-  let right = songs.reduce((acc, cur) => acc + cur, 0);
+  let lt = Math.max(...songs);
+  let rt = songs.reduce((a, b) => a + b, 0);
 
-  while (left <= right) {
-    let mid = parseInt((left + right) / 2);
+  while (lt <= rt) {
+    let mid = parseInt((lt + rt) / 2);
 
     if (count(songs, mid) <= m) {
       answer = mid;
-      right = mid - 1;
+      rt = mid - 1;
     } else {
-      left = mid + 1;
+      lt = mid + 1;
     }
   }
 

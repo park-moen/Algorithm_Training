@@ -2,15 +2,12 @@ function solution(arr) {
   let answer = arr;
 
   for (let i = 1; i < arr.length; i++) {
-    let temp = arr[i];
-    let left = i - 1;
+    let index = i;
 
-    while (left >= 0 && arr[left] > temp) {
-      arr[left + 1] = arr[left];
-      left--;
+    while (arr[index - 1] > arr[index]) {
+      [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]];
+      index--;
     }
-
-    arr[left + 1] = temp;
   }
 
   return answer;

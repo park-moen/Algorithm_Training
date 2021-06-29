@@ -1,21 +1,21 @@
 function solution(times) {
   let answer = Number.MIN_SAFE_INTEGER;
-  let time_line = [];
+  const T_line = [];
 
   for (let val of times) {
-    time_line.push([val[0], 'start']);
-    time_line.push([val[1], 'end']);
+    T_line.push([val[0], 's']);
+    T_line.push([val[1], 'e']);
   }
 
-  time_line.sort((a, b) => {
+  T_line.sort((a, b) => {
     if (a[0] === b[0]) return a[1].charCodeAt() - b[1].charCodeAt();
     else return a[0] - b[0];
   });
 
   let cnt = 0;
 
-  for (let val of time_line) {
-    if (val[1] === 'start') cnt++;
+  for (let time of T_line) {
+    if (time[1] === 's') cnt++;
     else cnt--;
 
     answer = Math.max(answer, cnt);

@@ -1,14 +1,18 @@
 function solution(arr) {
   let answer = arr;
+  const len = arr.length;
 
-  for (let i = 0; i < arr.length - 1; i++) {
-    let temp = i;
+  for (let i = 0; i < len - 1; i++) {
+    let idx = i;
 
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[temp]) temp = j;
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] < arr[idx]) idx = j;
     }
 
-    [arr[i], arr[temp]] = [arr[temp], arr[i]];
+    // let temp = arr[i];
+    // arr[i] = arr[idx];
+    // arr[idx] = temp;
+    [arr[i], arr[idx]] = [arr[idx], arr[i]];
   }
 
   return answer;
