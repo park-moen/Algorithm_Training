@@ -1,9 +1,9 @@
 function solution(n) {
-  function DFS(level) {
-    if (level === 0) return;
+  function DFS(L) {
+    if (L === 0) return;
     else {
-      DFS(level - 1);
-      console.log(level);
+      DFS(L - 1);
+      console.log(L);
     }
   }
 

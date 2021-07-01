@@ -1,6 +1,6 @@
 function solution(m, ps, pt) {
   let answer = Number.MIN_SAFE_INTEGER;
-  let len = ps.length;
+  const len = ps.length;
 
   function DFS(L, sum, time) {
     if (time > m) return;

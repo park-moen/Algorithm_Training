@@ -1,11 +1,11 @@
 function solution(n) {
   let answer = '';
 
-  function DFS(level) {
-    if (level === 0) return;
+  function DFS(L) {
+    if (L === 0) return;
     else {
-      DFS(parseInt(level / 2));
-      answer += level % 2;
+      DFS(parseInt(L / 2));
+      answer += L % 2;
     }
   }
 

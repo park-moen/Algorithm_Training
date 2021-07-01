@@ -4,7 +4,6 @@ function solution(c, arr) {
 
   function DFS(L, sum) {
     if (sum > c) return;
-
     if (L === len) {
       answer = Math.max(answer, sum);
     } else {

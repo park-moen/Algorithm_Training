@@ -2,11 +2,11 @@ function solution(n, m) {
   let answer = [];
   const temp = Array.from({ length: m }, () => 0);
 
-  function DFS(L, s) {
+  function DFS(L, start) {
     if (L === m) {
-      answer.push(temp.slice());
+      answer.push([...temp]);
     } else {
-      for (let i = s; i <= n; i++) {
+      for (let i = start; i <= n; i++) {
         temp[L] = i;
         DFS(L + 1, i + 1);
       }

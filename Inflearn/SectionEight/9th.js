@@ -1,12 +1,15 @@
 function solution(m, arr) {
   let answer = Number.MAX_SAFE_INTEGER;
+  const types = arr.length;
 
   function DFS(L, sum) {
     if (sum > m || L >= answer) return;
+
     if (sum === m) {
+      console.log(L, sum);
       answer = Math.min(answer, L);
     } else {
-      for (let i = 0; i < arr.length; i++) {
+      for (let i = 0; i < types; i++) {
         DFS(L + 1, sum + arr[i]);
       }
     }

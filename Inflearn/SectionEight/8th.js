@@ -1,10 +1,10 @@
 function solution(n, m) {
   let answer = [];
-  let temp = Array.from({ length: m }, () => 0);
+  const temp = Array.from({ length: m }, () => 0);
 
   function DFS(L) {
     if (L === m) {
-      answer.push(temp.slice());
+      answer.push([...temp]);
     } else {
       for (let i = 1; i <= n; i++) {
         temp[L] = i;

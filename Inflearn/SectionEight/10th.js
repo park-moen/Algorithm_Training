@@ -1,18 +1,19 @@
 function solution(m, arr) {
   let answer = [];
-  const checkArr = Array.from({ length: arr.length }, () => 0);
+  const len = arr.length;
+  const ch = Array.from({ length: len }, () => 0);
   const temp = Array.from({ length: m }, () => 0);
 
   function DFS(L) {
     if (L === m) {
-      answer.push(temp.slice());
+      answer.push([...temp]);
     } else {
-      for (let i = 0; i < arr.length; i++) {
-        if (checkArr[i] === 0) {
-          checkArr[i] = 1;
+      for (let i = 0; i < len; i++) {
+        if (ch[i] === 0) {
           temp[L] = arr[i];
+          ch[i] = 1;
           DFS(L + 1);
-          checkArr[i] = 0;
+          ch[i] = 0;
         }
       }
     }
