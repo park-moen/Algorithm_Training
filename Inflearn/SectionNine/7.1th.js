@@ -1,8 +1,8 @@
 function solution(board) {
   let answer = 0;
+  const dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+  const dy = [0, 1, 1, 1, 0, -1, -1, -1];
   const len = board.length;
-  dx = [-1, -1, 0, 1, 1, 1, 0, -1];
-  dy = [0, 1, 1, 1, 0, -1, -1, -1];
 
   function DFS(x, y) {
     board[x][y] = 0;
@@ -20,8 +20,8 @@ function solution(board) {
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < len; j++) {
       if (board[i][j] === 1) {
-        answer++;
         DFS(i, j);
+        answer++;
       }
     }
   }

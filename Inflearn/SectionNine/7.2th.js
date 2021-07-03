@@ -10,6 +10,7 @@ function solution(board) {
       if (board[i][j] === 1) {
         board[i][j] = 0;
         queue.push([i, j]);
+        answer++;
 
         while (queue.length) {
           let [x, y] = queue.shift();
@@ -24,8 +25,6 @@ function solution(board) {
             }
           }
         }
-
-        answer++;
       }
     }
   }
