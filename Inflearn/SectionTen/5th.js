@@ -1,5 +1,5 @@
 function solution(m, arr) {
-  let answer = 0;
+  let answer;
   const dy = Array.from({ length: m + 1 }, () => 0);
 
   for (let i = 0; i < arr.length; i++) {
@@ -12,7 +12,6 @@ function solution(m, arr) {
   }
 
   answer = dy[m];
-
   return answer;
 }
 

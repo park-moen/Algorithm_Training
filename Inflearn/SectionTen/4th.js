@@ -1,6 +1,6 @@
 function solution(m, coin) {
-  let answer = 0;
-  let dy = Array.from({ length: m + 1 }, () => 1000);
+  let answer;
+  const dy = Array.from({ length: m + 1 }, () => 1000);
   dy[0] = 0;
 
   for (let i = 0; i < coin.length; i++) {
@@ -10,7 +10,6 @@ function solution(m, coin) {
   }
 
   answer = dy[m];
-
   return answer;
 }
 

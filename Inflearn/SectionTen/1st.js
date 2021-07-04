@@ -1,5 +1,5 @@
 function solution(n) {
-  let answer = 0;
+  let answer;
   const dy = Array.from({ length: n + 1 }, () => 0);
 
   dy[1] = 1;
