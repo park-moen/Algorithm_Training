@@ -16,7 +16,11 @@ function solution(genres, plays) {
     }
   });
 
+  console.log(genreMap, genreCountMap);
+
   let orderGenre = [...genreCountMap].sort((a, b) => b[1] - a[1]);
+
+  console.log(orderGenre);
 
   orderGenre.forEach(item => {
     let targetIndex = genreMap
