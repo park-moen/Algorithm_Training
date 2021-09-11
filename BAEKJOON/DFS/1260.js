@@ -1,38 +1,57 @@
 const fs = require('fs');
-const input = fs.readFileSync('input.txt').toString().trim().split('\n');
+let input = fs.readFileSync('input.txt').toString().trim().split('\n');
 
 const [N, M, V] = input[0].split(' ').map(item => +item);
+input = input.slice(1);
 
-const arr = [];
 const graph = Array.from(Array(N + 1), () => Array(N + 1).fill(0));
-const ch = Array.from({ length: N + 1 }, () => 0);
 
-for (let i = 1; i < input.length; i++) {
-  arr.push(input[i].split(' '));
+for (let i of input) {
+  let [x, y] = i.split(' ').map(item => +item);
+
+  graph[x][y] = 1;
+  graph[y][x] = 1;
 }
 
-for (let [a, b] of arr) {
-  graph[a][b] = 1;
+const DFS_graph = [];
+const BFS_graph = [];
+const BFS_visited = Array.from({ length: N + 1 }, () => 0);
+const DFS_visited = Array.from({ length: N + 1 }, () => 0);
+
+function dfs(v) {
+  DFS_graph.push(v);
+  DFS_visited[v] = 1;
+
+  for (let i = 1; i <= N; i++) {
+    if (DFS_visited[i] === 0 && graph[v][i] === 1) {
+      DFS_visited[i] = 1;
+      dfs(i);
+    }
+  }
 }
 
-function solution(graph, ch, V, N) {
-  let answer = '';
+function bfs(v) {
+  let queue = [];
 
-  function dfs(v) {
-    for (let i = 1; i <= N; i++) {
-      if (ch[i] === 0 && graph[v][i] === 1) {
-        ch[i] = 1;
-        answer += i;
-        dfs(i);
+  queue.push(v);
+  BFS_visited[v] = 1;
+  BFS_graph.push(v);
+
+  while (queue.length) {
+    const nv = queue.shift();
+
+    for (let i = 1; i < graph.length; i++) {
+      if (graph[nv][i] === 1 && BFS_visited[i] === 0) {
+        BFS_visited[i] = 1;
+        queue.push(i);
+        BFS_graph.push(i);
       }
     }
   }
-
-  ch[V] = 1;
-  answer += V;
-  dfs(V);
-
-  console.log(answer);
 }
 
-solution(graph, ch, V, N);
+dfs(V);
+bfs(V);
+
+console.log(DFS_graph.join(' '));
+console.log(BFS_graph.join(' '));
