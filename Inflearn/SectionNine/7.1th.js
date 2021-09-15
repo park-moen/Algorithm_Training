@@ -5,6 +5,7 @@ function solution(board) {
   const len = board.length;
 
   function DFS(x, y) {
+    console.log(x, y);
     board[x][y] = 0;
 
     for (let k = 0; k < 8; k++) {
@@ -30,13 +31,8 @@ function solution(board) {
 }
 
 let arr = [
-  [1, 1, 0, 0, 0, 1, 0],
-  [0, 1, 1, 0, 1, 1, 0],
-  [0, 1, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 0, 0],
-  [1, 0, 0, 0, 1, 0, 0],
-  [1, 0, 1, 0, 1, 0, 0],
+  [1, 1, 1],
+  [1, 1, 1],
 ];
 
 console.log(solution(arr));
