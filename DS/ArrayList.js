@@ -1,59 +1,25 @@
 class ArrayList {
   constructor(capacity) {
-      this.capacity = capacity;
-      this.array = new Int32Array(capacity);
-      this.length = 0;
+    this.capacity = capacity;
+    this.array = new Int32Array(capacity);
+    this.length = 0;
   }
-  
+
   isEmpty() {
-    return this.length === 0 ? true : false;
+    return this.length === 0;
   }
 
   prepend(value) {
-    if (this.length === this.capacity) {
-      this.capacity *= 2;
-
-      const newArr = new Int32Array(this.capacity);
-
-      for (let i = 0; i < this.length; i++) {
-        newArr[i + 1] = this.array[i];
-      }
-
-      this.array = newArr;
-    } else {
-      for (let i = this.length - 1; i >= 0; i--) {
-        this.array[i + 1] = this.array[i];
-      }
-    }
-
-    ++this.length;
-    this.array[0] = value;
-
-    return;
+    this.insert(0, value);
   }
 
   append(value) {
-    if (this.length === this.capacity) {
-      this.capacity *= 2;
-
-      const newArr = new Int32Array(this.capacity);
-
-      for (let i = 0; i < this.length; i++) {
-        newArr[i] = this.array[i];
-      }
-
-      this.array = newArr;
-    } 
-
-    this.array[this.length++] = value;
-
-    return;
+    this.insert(this.length, value);
   }
 
   setHead(index) {
+    if (index < 0 || index > this.length) return false;
 
-    if (this.length < index) return false;
-    
     this.array = this.array.slice(index);
     this.capacity -= index;
     this.length -= index;
@@ -62,26 +28,27 @@ class ArrayList {
   }
 
   access(index) {
-    if (length.length <= index) return undefined;
+    if (index < 0 || index >= this.length) return;
 
     return this.array[index];
   }
 
   insert(index, value) {
-    if (this.length < index) return false;
+    if (index < 0 || index > this.length) return false;
 
     if (this.length === this.capacity) {
       this.capacity *= 2;
-      const newArr = Int32Array(this.capacity);
+      const newArray = new Int32Array(this.capacity);
 
       for (let i = 0; i < index; i++) {
-        newArr = this.array[i];
+        newArray[i] = this.array[i];
       }
 
-      for (let i = this.length - 1; i >= index; i--) {
-        newArr[i + 1] = this.array[i];
+      for (let i = index; i < this.length; i++) {
+        newArray[i + 1] = this.array[i];
       }
 
+      this.array = newArray;
     } else {
       for (let i = this.length - 1; i >= index; i--) {
         this.array[i + 1] = this.array[i];
@@ -89,35 +56,36 @@ class ArrayList {
     }
 
     this.array[index] = value;
-    ++this.length;
+    this.length++;
 
     return true;
   }
 
   remove(index) {
-    if (this.length <= index) return false;
+    if (index < 0 || index >= this.length) return false;
 
     for (let i = index; i < this.length; i++) {
       this.array[i] = this.array[i + 1];
     }
 
-    --this.length;
-
+    this.length--;
     return true;
   }
 
   print() {
-    if (this.length === 0) {
-      return '[]';
+    if (!this.length) {
+      console.log([]);
+      return [];
     }
 
-    let result = ' ';
+    let result = [];
 
     for (let i = 0; i < this.length; i++) {
-      result += this.array[i] + ' '
+      result.push(this.array[i]);
     }
 
-    return `[${result}]`
+    console.log(result);
+    return result;
   }
 }
 
@@ -133,5 +101,4 @@ for (let i = 0; i < 5; i++) {
 
 myList.remove(0);
 
-console.log(myList.print());
-
+myList.print();

@@ -1,28 +1,25 @@
 class LinearQueue {
   constructor(capacity) {
-      this.capacity = capacity;
-      this.front = 0;
-      this.rear = 0;
-      this.array = new Array(capacity);
+    this.capacity = capacity;
+    this.rear = 0;
+    this.front = 0;
+    this.array = new Array(capacity);
   }
 
   put(value) {
     if (this.rear === this.capacity) {
-      console.error('queue overflow');
-      
+      console.error('overflow');
       return false;
     }
 
     this.array[this.rear++] = value;
-
     return true;
   }
 
   get() {
     if (this.front === this.rear) {
-      console.error('queue underflow');
-
-      return undefined;
+      console.error('underflow');
+      return;
     }
 
     return this.array[this.front++];
@@ -30,20 +27,30 @@ class LinearQueue {
 
   peek() {
     if (this.front === this.rear) {
-      return undefined;
+      console.error('underflow');
+      return;
     }
 
     return this.array[this.front];
   }
 
-  print() {
-    let result = ' ';
+  isEmpty() {
+    return this.front === this.rear;
+  }
 
-    for (let i = this.front; i < this.rear; i++) {
-      result += this.array[i] + ' ';
+  print() {
+    if (this.front === this.rear) {
+      console.log([]);
+      return [];
     }
 
-    return `[${result}]`;
+    const result = [];
+    for (let i = this.front; i < this.rear; i++) {
+      result.push(this.array[i]);
+    }
+
+    console.log(result);
+    return result;
   }
 }
 

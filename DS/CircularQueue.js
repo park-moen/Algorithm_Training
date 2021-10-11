@@ -1,73 +1,69 @@
 class CircularQueue {
   constructor(capacity) {
-      this.capacity = capacity;
-      this.front = 0;
-      this.rear = 0;
-      this.isFull = false;
-      this.array = new Array(capacity);
+    this.capacity = capacity;
+    this.front = 0;
+    this.rear = 0;
+    this.isFull = false;
+    this.array = new Array(capacity);
   }
 
   put(value) {
     if (this.isFull) {
-      console.error('queue overflow');
-
+      console.log('overflow');
       return false;
     }
 
     this.array[this.rear++] = value;
     this.rear %= this.capacity;
 
-    if (this.rear === this.front) {
-        this.isFull = true;
-    }
+    if (this.rear === this.front) this.isFull = true;
 
     return true;
   }
 
   get() {
     if (!this.isFull && this.front === this.rear) {
-      console.error('queue underflow');
-      
-      return false;
+      console.log('underflow');
+      return;
     }
 
-    this.array[this.front++];
+    const value = this.array[this.front++];
     this.front %= this.capacity;
-
     this.isFull = false;
 
-    return true;
+    return value;
   }
 
   peek() {
     if (!this.isFull && this.front === this.rear) {
-      console.error('queue underflow');
-
-      return undefined;
+      console.log('underflow');
+      return;
     }
 
     return this.array[this.front];
   }
 
+  isEmpty() {
+    return !this.isFull && this.front === this.rear;
+  }
+
   print() {
     if (!this.isFull && this.front === this.rear) {
-      return '[]';
+      console.log([]);
+      return [];
     }
 
-    // 순회를 통해서 front index가 rear index보다 뒤에 있는 경우
-    // 1. for문을 두번 사용
-    // 2. 가상으로 capacity(용량)를 만드어서 for문을 한번만 사용
-    let index = this.rear;
-    let result = ' ';
+    let endIdx = this.rear;
 
-    if (this.rear <= this.front) {
-      index += this.capacity;
-   }
-    for (let i = this.front; i < index; i++) {
-      result += this.array[i % this.capacity] + ' ';
-   }
+    if (this.rear <= this.front) endIdx += this.capacity;
 
-   return `[${result}]`;
+    const result = [];
+    for (let i = this.front; i < endIdx; i++) {
+      result.push(this.array[i % this.capacity]);
+    }
+
+    console.log(result);
+    return result;
   }
 }
 
@@ -81,6 +77,6 @@ myQueue.get();
 myQueue.get();
 myQueue.get();
 
-console.log(myQueue.peek());;
+console.log(myQueue.peek());
 
 console.log(myQueue.print());

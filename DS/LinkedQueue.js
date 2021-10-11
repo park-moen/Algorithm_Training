@@ -1,71 +1,80 @@
 class Node {
   constructor(value, prev, next) {
-      this.value = value;
-      this.prev = prev;
-      this.next = next;
+    this.value = value;
+    this.prev = prev;
+    this.next = next;
   }
 }
 
 class LinkedQueue {
   constructor() {
-      this.head = null;
-      this.tail = null;
-  }
-
-  isEmpty() {
-    return this.head === null ? true : false;
+    this.head = null;
+    this.tail = null;
   }
 
   put(value) {
-    if (this.head === null) {
-      this.head = new Node(value, null, null);
+    if (this.tail === null) {
+      this.head = new Node(value, this.head, null);
       this.tail = this.head;
-    } else {
-      this.tail = new Node(value, this.tail, null);
-      this.tail.prev.next = this.tail;
+      return true;
     }
+
+    this.tail = new Node(value, this.tail, null);
+    this.tail.prev.next = this.tail;
+
+    return true;
   }
 
   get() {
-    let value;
-    if (this.head === null) {
+    let result = 0;
 
-      return undefined;
+    if (this.head === null) {
+      console.log('underflow');
+      return;
     } else if (this.head === this.tail) {
-      value = this.head.value;
+      result = this.head.value;
+
       this.head = null;
       this.tail = null;
     } else {
-      value = this.head.value;
+      result = this.head.value;
+
       this.head = this.head.next;
       this.head.prev = null;
     }
 
-    return value;
+    return result;
   }
 
   peek() {
     if (this.head === null) {
-      return undefined;
+      console.log('underflow');
+      return;
     }
+
     return this.head.value;
   }
 
-  print() {
-    let curr = this.head;
+  isEmpty() {
+    return this.head === null;
+  }
 
-    if (curr === null) {
-      return '[]';
+  print() {
+    if (this.head === null) {
+      console.log([]);
+      return [];
     }
 
-    let result = ' ';
+    const result = [];
+    let curr = this.head;
 
     while (curr !== null) {
-      result += `${curr.value} `;
+      result.push(curr.value);
       curr = curr.next;
     }
 
-    return `[${result}]`
+    console.log(result);
+    return result;
   }
 }
 

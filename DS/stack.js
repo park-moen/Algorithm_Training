@@ -1,52 +1,51 @@
 class Stack {
   constructor(capacity) {
-      this.capacity = capacity
-      this.top = 0;
-      this.array = new Array(capacity);
+    this.capacity = capacity;
+    this.top = 0;
+    this.array = new Array(capacity);
   }
 
   push(value) {
-    if (this.top === this.capacity) {
+    if (this.capacity === this.top) {
       console.error('stack overflow');
-
       return false;
     }
 
     this.array[this.top++] = value;
-
     return true;
   }
 
   pop() {
     if (this.top === 0) {
       console.error('stack underflow');
-
-      return undefined;
+      return;
     }
 
     return this.array[--this.top];
   }
 
   peek() {
-    if (this.top === 0) {
-      return undefined;
-    }
-
-    return this.array[this.top - 1];
+    return this.top === 0 ? undefined : this.array[this.top - 1];
   }
 
   isEmpty() {
-    return this.top === 0 ? true : false;
+    return this.top === 0;
   }
-  
-  print() {
-    let result = ' ';
 
-    for (let i = 0; i < this.top; i++) {
-      result += this.array[i] + ' ';
+  print() {
+    if (this.top === 0) {
+      console.log([]);
+      return [];
     }
 
-    return `[${result}]`;
+    let res = [];
+
+    for (let i = 0; i < this.top; i++) {
+      res.push(this.array[i]);
+    }
+
+    console.log(res);
+    return res;
   }
 }
 
@@ -70,4 +69,3 @@ console.log(myList.isEmpty());
 console.log(myList.print());
 
 console.log(myList.peek());
-

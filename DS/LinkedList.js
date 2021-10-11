@@ -8,24 +8,30 @@ class Node {
 class SinglyLinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
+    this.size = 0;
   }
 
   isEmpty() {
-    return this.head === null ? false : true;
+    return this.head === null;
+  }
+
+  getSize() {
+    return this.size;
   }
 
   prepend(value) {
-    return (this.head = new Node(value, this.head));
+    this.head = new Node(value, this.head);
+    this.size++;
+
+    return value;
   }
 
   append(value) {
+    if (this.head === null) return this.prepend(value);
+
     let curr = this.head;
     let prev = null;
-
-    if (curr === null) {
-      this.head = new Node(value, null);
-      return;
-    }
 
     while (curr !== null) {
       prev = curr;
@@ -33,26 +39,29 @@ class SinglyLinkedList {
     }
 
     prev.next = new Node(value, null);
+    this.size++;
 
-    return;
+    return value;
   }
 
   setHead(index) {
+    if (index < 0 || index > this.size) return false;
+
     let curr = this.head;
-    let prev = null;
 
     for (let i = 0; i < index; i++) {
-      if (curr === null) return false;
-
       curr = curr.next;
     }
 
-    this.head = curr.next;
+    this.head = curr;
+    this.size -= index;
 
     return true;
   }
 
   access(index) {
+    if (index < 0 || index >= this.size) return;
+
     let curr = this.head;
 
     for (let i = 0; i < index; i++) {
@@ -63,77 +72,69 @@ class SinglyLinkedList {
   }
 
   insert(index, value) {
+    if (index < 0 || index > this.size) return false;
+
     if (index === 0) {
       this.prepend(value);
-      return;
+      return true;
     }
 
     let curr = this.head;
     let prev = null;
 
     for (let i = 0; i < index; i++) {
-      if (curr === null) return;
-
       prev = curr;
       curr = curr.next;
     }
 
     prev.next = new Node(value, curr);
+    this.size++;
 
-    return;
+    return true;
   }
 
   remove(index) {
+    if (index < 0 || index >= this.size) return false;
+
     if (index === 0) {
-      if (this.head !== null) {
-        this.head = this.head.next;
-        return true;
-      } else {
-        return false;
+      this.head = this.head.next;
+    } else {
+      let curr = this.head;
+      let prev = null;
+
+      for (let i = 0; i < index; i++) {
+        prev = curr;
+        curr = curr.next;
       }
+
+      prev.next = curr.next;
     }
 
-    let curr = this.head;
-    let prev = null;
+    this.size--;
 
-    for (let i = 0; i < index; i++) {
-      if (curr === null) {
-        return false;
-      }
-      prev = curr;
-      curr = curr.next;
-    }
-
-    if (prev.next === null) return false;
-
-    prev.next = curr.next;
-
-    return;
+    return true;
   }
 
   print() {
-    let curr = this.head;
-
-    if (curr === null) {
-      console.log('[]');
-      return;
+    if (this.head === null) {
+      console.log([]);
+      return [];
     }
 
-    let result = ' ';
+    let curr = this.head;
+    let result = [];
+
     while (curr !== null) {
-      result += curr.value + ' ';
+      result.push(curr.value);
       curr = curr.next;
     }
 
-    console.log(`[${result}]`);
-
-    return;
+    console.log(result);
+    return result;
   }
 }
 
 const myList = new SinglyLinkedList();
-
-console.log(myList.print());
 
 console.log(myList.remove(0));
 
@@ -141,11 +142,15 @@ for (let i = 0; i < 4; i++) {
   myList.append(i + 1);
 }
 
-// myList.setHead(1); // [ 1 2 3 4 ] [ 3 4 ]
+myList.setHead(2);
 
-// console.log(myList.access(1));
-myList.insert(2, 2); // [ 1 2 2 3 4 ]
+myList.print();
 
-myList.remove(0); // [ 1 2 3 4 ]
+console.log(myList.access(1));
+myList.insert(2, 2);
+
+myList.print();
+
+myList.remove(0);
 
 myList.print();
