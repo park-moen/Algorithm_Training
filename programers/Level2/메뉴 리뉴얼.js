@@ -54,8 +54,8 @@ function solution(orders, course) {
   return result.sort();
 }
 
-const orders = ['ABCFG', 'AC', 'CDE', 'ACDE', 'BCFG', 'ACDEH'];
-// const orders = ['XYZ', 'XWY', 'WXA'];
+// const orders = ['ABCFG', 'AC', 'CDE', 'ACDE', 'BCFG', 'ACDEH'];
+const orders = ['XYZ', 'XWY', 'WXA'];
 const course = [2, 3, 4];
 
 console.log(solution(orders, course));
