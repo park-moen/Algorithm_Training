@@ -30,12 +30,16 @@ function solution(orders, course) {
     }
   }
 
+  console.log(combinationArr);
+
   for (let i = 0; i < combinationArr.length; i++) {
     for (let val of combinationArr[i]) {
       if (newMap[i].has(val)) newMap[i].set(val, newMap[i].get(val) + 1);
       else newMap[i].set(val, 1);
     }
   }
+
+  console.log(newMap);
 
   for (let i = 0; i < course.length; i++) {
     let max = 2;
