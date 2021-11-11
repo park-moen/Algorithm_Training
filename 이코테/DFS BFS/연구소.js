@@ -2,6 +2,7 @@ var fs = require('fs');
 var input = fs.readFileSync('input.txt').toString().trim().split('\n');
 
 function findCombination(arr, m) {
+  console.log(arr);
   const comb = [];
   const pick = [];
   const used = Array.from({ length: arr.length }, () => 0);
