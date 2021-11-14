@@ -9,13 +9,6 @@ function solution(nums, opr, n) {
   let minValue = Number.MAX_SAFE_INTEGER;
 
   function dfs(L, nowData) {
-    console.log(
-      `L: ${L},`,
-      `nowData: ${nowData},`,
-      `opr: ${opr},`,
-      `nums: [ ${nums} ]`
-    );
-    console.log('');
     if (L === n) {
       maxValue = Math.max(maxValue, nowData);
       minValue = Math.min(minValue, nowData);

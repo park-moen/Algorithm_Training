@@ -18,6 +18,8 @@ for (let i = 0; i < N; i++) {
 }
 
 data.sort();
+
+console.log(data);
 const queue = [...data];
 const dx = [-1, 0, 1, 0];
 const dy = [0, 1, 0, -1];
@@ -38,4 +40,5 @@ while (queue.length) {
   }
 }
 
+console.log(graph);
 console.log(graph[targetX - 1][targetY - 1]);

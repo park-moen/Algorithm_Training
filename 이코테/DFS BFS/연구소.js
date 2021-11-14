@@ -51,10 +51,13 @@ function solution(N, M, board) {
 
   const possibleWallPos = findCombination(zeroPos, 3);
 
+  console.log(possibleWallPos);
+
   possibleWallPos.forEach(walls => {
     const temp = board.map(v => [...v]);
 
     for (let [x, y] of walls) {
+      console.log(x, y);
       temp[x][y] = 1;
     }
 
