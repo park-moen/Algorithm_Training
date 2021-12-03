@@ -1,6 +1,7 @@
 function solution(n, m) {
   let answer = [];
   const temp = Array.from({ length: m }, () => 0);
+  console.log(temp);
 
   function DFS(L, start) {
     if (L === m) {

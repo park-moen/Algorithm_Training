@@ -19,6 +19,8 @@ function solution(s) {
     else hash.set(val, 1);
   }
 
+  console.log([...hash]);
+
   hash = new Map([...hash].sort((a, b) => b[1] - a[1]));
 
   return [...hash.keys()];
