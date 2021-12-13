@@ -30,3 +30,23 @@ console.log(solution(10));
 
 //   return answer;
 // }
+
+// 다른 사람 풀이 2
+// function solution(n) {
+//   let answer = '';
+//   let rest = 0;
+
+//   while (n) {
+//     rest = n % 3;
+//     n = parseInt(n / 3);
+
+//     if (rest === 0) {
+//       n -= 1;
+//       rest = 4;
+//     }
+
+//     answer = rest + answer;
+//   }
+
+//   return answer;
+// }
