@@ -1,4 +1,4 @@
-function solution(record) {
+function solution1(record) {
   let answer = [];
   const hash = {};
 
@@ -17,7 +17,7 @@ function solution(record) {
   return answer.map(el => hash[el[0]] + el[1]);
 }
 
-const recode = [
+const recode1 = [
   'Enter uid1234 Muzi',
   'Enter uid4567 Prodo',
   'Leave uid1234',
@@ -25,7 +25,7 @@ const recode = [
   'Change uid4567 Ryan',
 ];
 
-console.log(solution(recode));
+console.log(solution1(recode1));
 
 function solution2(record) {
   const users = {};
@@ -48,8 +48,6 @@ function solution2(record) {
     }
   }
 
-  console.log(orders, users);
-
   const res = [];
 
   for (const order of orders) {
@@ -61,3 +59,46 @@ function solution2(record) {
 
   return res;
 }
+
+const recode2 = [
+  'Enter uid1234 Muzi',
+  'Enter uid4567 Prodo',
+  'Leave uid1234',
+  'Enter uid1234 Prodo',
+  'Change uid4567 Ryan',
+];
+
+console.log(solution2(recode2));
+
+function solution3(record) {
+  const answer = [];
+  const upToState = {}; // hash
+
+  for (const infomation of record) {
+    const [action, id, name] = infomation.split(' ');
+
+    if (action === 'Enter' || action === 'Change') upToState[id] = name;
+  }
+
+  for (const infomation of record) {
+    const [action, id] = infomation.split(' ');
+
+    if (action === 'Enter') {
+      answer.push(upToState[id] + '님이 들어왔습니다.');
+    } else if (action === 'Leave') {
+      answer.push(upToState[id] + '님이 나갔습니다.');
+    }
+  }
+
+  return answer;
+}
+
+const recode3 = [
+  'Enter uid1234 Muzi',
+  'Enter uid4567 Prodo',
+  'Leave uid1234',
+  'Enter uid1234 Prodo',
+  'Change uid4567 Ryan',
+];
+
+console.log(solution3(recode3));
