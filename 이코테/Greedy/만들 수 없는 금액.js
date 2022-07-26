@@ -9,6 +9,7 @@ const coins = input[1]
 let target = 1;
 
 for (let x of coins) {
+  console.log(x, target);
   if (target < x) break;
 
   target += x;

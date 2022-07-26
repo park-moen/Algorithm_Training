@@ -37,7 +37,35 @@
 //   return answer;
 // }
 
+// 시간 초과 답안
+// function solution(s) {
+//   const transformStringToArray = s.split('');
+//   let i = 0;
+
+//   while (true) {
+//     if (transformStringToArray[i] === transformStringToArray[i + 1]) {
+//       transformStringToArray.splice(i, 2);
+
+//       i = 0;
+//     } else {
+//       i++;
+//     }
+
+//     if (i >= s.length || transformStringToArray.length === 0) {
+//       break;
+//     }
+//   }
+
+//   if (transformStringToArray.length === 0) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// }
+
 function solution(s) {
+  if (s.length % 2 !== 0) return 0;
+
   const stack = [];
 
   for (let i = 0; i < s.length; i++) {
@@ -46,6 +74,22 @@ function solution(s) {
   }
 
   return stack.length ? 0 : 1;
+}
+
+function solution2(s) {
+  if (s.length % 2 !== 0) return 0;
+
+  const stack = [s[0]];
+
+  for (let i = 1; i < s.length; i++) {
+    if (stack[stack.length - 1] === s[i]) {
+      stack.pop();
+    } else {
+      stack.push(s[i]);
+    }
+  }
+
+  return stack.length > 0 ? 0 : 1;
 }
 
 const s1 = 'baabaa'; // 1
@@ -57,3 +101,4 @@ const s6 = 'abccaabaa'; // 0
 const s7 = 'a'; // 0
 
 console.log(solution(s5));
+console.log(solution2(s3));

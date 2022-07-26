@@ -15,6 +15,8 @@ for (let val of data) {
     res++;
     count = 0;
   }
+
+  console.log(val, res);
 }
 
 console.log(res);
