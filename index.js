@@ -1,6 +1,7 @@
 const fs = require('fs');
 let input = fs.readFileSync('input.txt').toString().trim();
 
-let temp = input.split('-');
+let zeroCount = input.split('1').filter(v => v.includes('0')).length;
+let oneCount = input.split('0').filter(v => v.includes('1')).length;
 
-console.log(temp);
+console.log(Math.min(zeroCount, oneCount));
