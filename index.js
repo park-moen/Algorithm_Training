@@ -1,7 +1,13 @@
 const fs = require('fs');
-let input = fs.readFileSync('input.txt').toString().trim();
+const input = fs
+  .readFileSync('input.txt')
+  .toString()
+  .trim()
+  .split('\n')
+  .map(v => v.split(' ').map(v => +v));
+const [N, K] = input.shift();
+const weigthAndCost = input.splice(0, N).sort((a, b) => b[1] - a[1]);
+const maxBagWeight = input.map(v => v[0]).sort((a, b) => a - b);
 
-let zeroCount = input.split('1').filter(v => v.includes('0')).length;
-let oneCount = input.split('0').filter(v => v.includes('1')).length;
-
-console.log(Math.min(zeroCount, oneCount));
+console.log(N, K);
+console.log(weigthAndCost, maxBagWeight);
