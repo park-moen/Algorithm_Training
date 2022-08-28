@@ -1,21 +1,19 @@
 function solution(n) {
-  const answer = [];
-  function hanoi(n, from, to, via) {
-    console.log(n, from, to, via);
-    if (n === 1) {
-      answer.push([from, to]);
-    } else {
-      hanoi(n - 1, from, via, to);
-      answer.push([from, to]);
-      hanoi(n - 1, via, to, from);
+  let answer = 0;
+
+  for (let i = 1; i <= n; i++) {
+    let temp = i;
+
+    for (let j = i + 1; j <= n; j++) {
+      console.log(j);
+      temp += j;
+      if (temp === n) answer++;
+      else if (temp > n) break;
     }
   }
 
-  hanoi(n, 1, 3, 2);
-
-  return answer;
+  return answer + 1;
 }
 
-const n = 3;
-
+const n = 15;
 solution(n);
