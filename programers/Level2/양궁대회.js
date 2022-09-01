@@ -63,4 +63,6 @@ function solution(n, info) {
 const n = 10;
 const info = [0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 3];
 
-console.log(solution(n, info));
+const n1 = 5;
+const info1 = [2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0];
+console.log(solution(n1, info1));
