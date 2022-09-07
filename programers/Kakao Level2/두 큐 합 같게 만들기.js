@@ -24,3 +24,10 @@ function solution(queue1, queue2) {
 
   return -1;
 }
+
+const queue1 = [1, 2, 1, 2];
+const queue2 = [1, 10, 1, 2];
+
+solution(queue1, queue2);
+
+// [1,1,1,8,10,9] [1,1,1,1,1,1] // (15회 확인필요)
