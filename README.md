@@ -46,3 +46,8 @@
 
 - [프로그래머스 Level 1] 두 정수 사이의 합
 - [프로그래머스 Level 1] 부족한 금액 계산하기
+- [프로그래머스 Level 1] 프린터
+
+## 유용한 내장 함수
+
+- String.prototype.padStart()
