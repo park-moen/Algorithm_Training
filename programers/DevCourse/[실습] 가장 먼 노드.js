@@ -1,6 +1,4 @@
 function solution(n, edge) {
-  let farthestCount = 0;
-
   const undirectedGrahp = edge.map((edge, idx) => edge[idx]);
 
   return answer;
