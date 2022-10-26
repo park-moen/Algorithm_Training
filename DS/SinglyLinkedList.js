@@ -11,7 +11,7 @@ class SinglyLinkedList {
   }
 
   // 리스트가 비어있는지 확인하는 연산자
-  isEmply() {
+  isEmpty() {
     if (this.head !== null) {
       return false;
     }
@@ -134,16 +134,16 @@ class SinglyLinkedList {
 
 const singlyLinkedList = new SinglyLinkedList();
 
-console.log(singlyLinkedList.isEmply());
+console.log(singlyLinkedList.isEmpty());
 singlyLinkedList.prepend(4);
 singlyLinkedList.prepend(5);
 
 singlyLinkedList.append(2);
 singlyLinkedList.append(1);
 singlyLinkedList.insert(3, 2);
-singlyLinkedList.remove(4);
+// singlyLinkedList.remove(4);
 
-console.log(singlyLinkedList.isEmply());
+console.log(singlyLinkedList.isEmpty());
 console.log(singlyLinkedList.access(2));
 
 singlyLinkedList.print();
