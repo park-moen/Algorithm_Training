@@ -1,15 +1,11 @@
 function solution(s) {
-  let answer = [];
-  const splitS = s.split(' ');
+  const numberArray = s.split(' ').map(string => parseInt(string));
+  const min = Math.min(...numberArray);
+  const max = Math.max(...numberArray);
 
-  answer.push(Math.min(...splitS));
-  answer.push(Math.max(...splitS));
-
-  return answer.join(' ');
+  return `${min} ${max}`;
 }
 
-const s1 = '1 2 3 4';
-const s2 = '-1 -2 -3 -4';
-const s3 = '-1 -1';
+const s = '1 2 3 4';
 
-solution(s1);
+solution(s);
