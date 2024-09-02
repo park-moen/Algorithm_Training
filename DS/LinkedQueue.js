@@ -28,7 +28,7 @@ class LinkedQueue {
 
   dequeue() {
     if (this.isEmpty()) {
-      console.log('queue underflow');
+      console.log("queue underflow");
       return;
     }
 
@@ -49,7 +49,7 @@ class LinkedQueue {
 
   peek() {
     if (this.isEmpty()) {
-      console.log('리스트에 값이 비어있습니다.');
+      console.log("리스트에 값이 비어있습니다.");
       return;
     }
 
@@ -84,9 +84,9 @@ linkedQueue.enqueue(2);
 linkedQueue.enqueue(3);
 linkedQueue.enqueue(4);
 
-const front = linkedQueue.dequeue();
-const peek = linkedQueue.peek();
+// linkedQueue.dequeue();
+// const peek = linkedQueue.peek();
 
-console.log(front, peek);
+// console.log(front, peek);
 
 linkedQueue.print();
