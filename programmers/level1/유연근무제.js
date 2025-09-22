@@ -1,32 +1,42 @@
+// @ts-nocheck
 function solution(schedules, timelogs, startday) {
-  let answer = 0;
-  const endDay = startday + 6;
-  const SATURDAY = 6;
-  const SUNDAY = 7;
+  const getCutoffTime = time => {
+    let hour = Math.floor(time / 100);
+    let minute = (time % 100) + 10;
 
-  for (let i = 0; i < schedules.length; i++) {
-    const targetTime = schedules[i] + 10;
-    let flag = true;
+    if (minute >= 60) {
+      hour += 1;
+      minute -= 60;
+    }
 
-    for (let j = startday; j <= endDay; j++) {
-      if (j === SATURDAY || j === SUNDAY) {
-        continue;
-      }
+    return hour * 100 + minute;
+  };
 
-      if (timelogs[i][j - startday] > targetTime) {
-        flag = false;
+  let rewardedEmployeeCount = 0;
+
+  for (let employeeIndex = 0; employeeIndex < schedules.length; employeeIndex++) {
+    const cutoffTime = getCutoffTime(schedules[employeeIndex]);
+    let allWeekdaysOnTime = true;
+
+    for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+      const currentDayOfWeek = ((startday - 1 + dayOffset) % 7) + 1;
+
+      if (currentDayOfWeek === 6 || currentDayOfWeek === 7) continue;
+
+      const actualArrival = timelogs[employeeIndex][dayOffset];
+
+      if (actualArrival > cutoffTime) {
+        allWeekdaysOnTime = false;
         break;
       }
     }
 
-    if (flag) {
-      answer++;
+    if (allWeekdaysOnTime) {
+      rewardedEmployeeCount++;
     }
   }
 
-  console.log(answer);
-
-  return answer;
+  return rewardedEmployeeCount;
 }
 
 const schedules1 = [700, 800, 1100];
@@ -48,4 +58,4 @@ const timelogs2 = [
 ];
 const startday2 = 1;
 
-solution(schedules2, timelogs2, startday2);
+// solution(schedules2, timelogs2, startday2);
