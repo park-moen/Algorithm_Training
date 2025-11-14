@@ -1,17 +1,17 @@
 function firstSolution(arr) {
   let flag = arr[0];
-  const result = [flag];
+  const stack = [flag];
 
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] === flag) {
       continue;
     } else {
       flag = arr[i];
-      result.push(flag);
+      stack.push(flag);
     }
   }
 
-  return result;
+  return stack;
 }
 
 // console.log(firstSolution([1, 1, 3, 3, 0, 1, 1]));
