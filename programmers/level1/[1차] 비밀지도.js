@@ -1,33 +1,32 @@
-function solution(n, arr1, arr2) {
-  var answer = [];
-
-  const firstDecoding = arr1.map(v => v.toString(2));
-  const lastDecoding = arr2.map(v => v.toString(2));
-
-  for (let i = 0; i < n; i++) {
-    if (firstDecoding[i].length !== n) {
-      const addZeroCount = n - firstDecoding[i].length;
-      firstDecoding[i] = '0'.repeat(addZeroCount) + firstDecoding[i];
-    }
-
-    if (lastDecoding[i].length !== n) {
-      const addZeroCount = n - lastDecoding[i].length;
-      lastDecoding[i] = '0'.repeat(addZeroCount) + lastDecoding[i];
-    }
+function decimalToBinary(decimal, n) {
+  let binary = '';
+  while (decimal > 0) {
+    binary = (decimal % 2) + binary;
+    decimal = Math.floor(decimal / 2);
   }
 
-  for (let i = 0; i < n; i++) {
-    let hashInfo = '';
-    for (let j = 0; j < n; j++) {
-      if (firstDecoding[i][j] === '1' || lastDecoding[i][j] === '1') {
-        hashInfo += '#';
-      } else {
-        hashInfo += ' ';
-      }
-    }
-
-    answer.push(hashInfo);
+  if (binary.length < n) {
+    binary = '0'.repeat(n - binary.length) + binary;
   }
 
-  return answer;
+  return binary;
 }
+
+function solution(n, arr1, arr2) {
+  const binaryArr1 = arr1.map(value => decimalToBinary(value, n));
+  const binaryArr2 = arr2.map(value => decimalToBinary(value, n));
+
+  return binaryArr1.map((binary, i) => {
+    return [...binary].reduce(
+      (acc, cur, j) =>
+        cur === '1' || binaryArr2[i][j] === '1' ? (acc += '#') : (acc += ' '),
+      ''
+    );
+  });
+}
+
+const n = 5;
+const arr1 = [9, 20, 28, 18, 11];
+const arr2 = [30, 1, 21, 17, 28];
+
+console.log(solution(n, arr1, arr2));
