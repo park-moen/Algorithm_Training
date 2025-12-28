@@ -1,25 +1,38 @@
+/**
+ * @param {string} s
+ * @param {string} skip
+ * @param {number} index
+ */
+
 function solution(s, skip, index) {
-  let newWord = '';
-  let newAlphabet = Array.from({ length: 26 }, (v, i) =>
-    String.fromCharCode(i + 97)
-  ).filter(item => !skip.includes(item));
+  const TOTAL_ALPHABET_COUNT = 26;
+  const CHAR_CODE_A = 97;
+  const skipSet = new Set(skip.split(''));
 
-  for (const ns of s) {
-    const nowIndex = newAlphabet.findIndex(item => item === ns);
+  let result = '';
 
-    if (nowIndex + index > newAlphabet.length - 1) {
-      let count = (nowIndex + index) % newAlphabet.length;
-      newWord += newAlphabet[count];
-    } else {
-      newWord += newAlphabet[nowIndex + index];
+  for (const originalChar of s) {
+    let currentChar = originalChar;
+    let validMoveCount = 0;
+
+    while (validMoveCount < index) {
+      const charCode = currentChar.charCodeAt(0) - CHAR_CODE_A;
+      const nextCharCode = (charCode + 1) % TOTAL_ALPHABET_COUNT;
+      currentChar = String.fromCharCode(nextCharCode + CHAR_CODE_A);
+
+      if (!skipSet.has(currentChar)) {
+        validMoveCount++;
+      }
     }
+
+    result += currentChar;
   }
 
-  return newWord;
+  return result;
 }
 
 const s = 'aukks';
 const skip = 'wbqd';
 const index = 5;
 
-console.log(solution(s, skip, index));
+solution(s, skip, index);
