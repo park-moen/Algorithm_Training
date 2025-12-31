@@ -1,32 +1,38 @@
+/**
+ *
+ * @param {string} dartResult
+ */
+
 function solution(dartResult) {
-  let darts = dartResult.split('');
-  let scores = [];
-  let score = 0;
+  const regex = /\d+[SDT][*#]?/g;
+  const rounds = dartResult.match(regex);
+  const scores = [];
+  const bonusMap = {
+    S: 1,
+    D: 2,
+    T: 3,
+  };
 
-  for (let i = 0; i < darts.length; i++) {
-    if (!isNaN(darts[i])) {
-      if (darts[i] === '1' && darts[i + 1] === '0') {
-        score = 10;
-        i++;
-      } else score = darts[i];
-    } else if (darts[i] === 'S') {
-      scores.push(Math.pow(score, 1));
-    } else if (darts[i] === 'D') {
-      scores.push(Math.pow(score, 2));
-    } else if (darts[i] === 'T') {
-      scores.push(Math.pow(score, 3));
-    } else if (darts[i] === '#') {
-      scores[scores.length - 1] *= -1;
-    } else if (darts[i] === '*') {
-      scores[scores.length - 2] *= 2;
-      scores[scores.length - 1] *= 2;
+  rounds.forEach((round, idx) => {
+    const [, score, bonus, option] = round.match(/(\d+)([SDT])([*#]?)/);
+    let point = Number(score) ** bonusMap[bonus];
+
+    if (option === '*') {
+      point *= 2;
+
+      if (idx > 0) {
+        scores[idx - 1] *= 2;
+      }
+    } else if (option === '#') {
+      point *= -1;
     }
-  }
 
-  let sum = 0;
-  for (let i = 0; i < scores.length; i++) {
-    sum += scores[i];
-  }
+    scores.push(point);
+  });
 
-  return sum;
+  return scores.reduce((sum, score) => sum + score, 0);
 }
+
+const dartResult = '1S2D*3T';
+
+solution(dartResult);
