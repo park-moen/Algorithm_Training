@@ -15,3 +15,62 @@ function solution(ingredient) {
   }
   return cnt;
 }
+
+/**
+ *
+ * @param {number[]} ingredient
+ */
+function secondSolution(ingredient) {
+  const stack = [];
+  let count = 0;
+
+  ingredient.forEach(value => {
+    stack.push(value);
+
+    if (
+      stack.length >= 4 &&
+      stack[stack.length - 4] === 1 &&
+      stack[stack.length - 3] === 2 &&
+      stack[stack.length - 2] === 3 &&
+      stack[stack.length - 1] === 1
+    ) {
+      stack.pop();
+      stack.pop();
+      stack.pop();
+      stack.pop();
+      count++;
+    }
+  });
+
+  return count;
+}
+
+/**
+ *
+ * @param {number[]} ingredient
+ */
+function thirdSolution(ingredient) {
+  const stack = [];
+  let count = 0;
+
+  ingredient.forEach(value => {
+    stack.push(value);
+
+    if (stack.length >= 4) {
+      const hamburger = stack.slice(-4).join('');
+      console.log('hamburger', hamburger);
+      console.log('end');
+      if (hamburger === '1231') {
+        stack.splice(-4);
+        count++;
+      }
+    }
+  });
+
+  return count;
+}
+
+const ingredient = [2, 1, 1, 2, 3, 1, 2, 3, 1];
+
+console.log(secondSolution(ingredient));
+console.log(thirdSolution(ingredient));
