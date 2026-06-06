@@ -13,3 +13,25 @@ const twoSum = function (nums, target) {
     }
   }
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum2 = function (nums, target) {
+  const hash = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (hash.has(target - nums[i])) {
+      return [hash.get(target - nums[i]), i];
+    } else {
+      hash.set(nums[i], i);
+    }
+  }
+};
+
+const nums = [2, 7, 11, 15];
+const target = 9;
+
+twoSum2(nums, target);
